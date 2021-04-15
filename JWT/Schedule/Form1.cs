@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,8 @@ namespace Schedule
         }
         public void Login(string username,string password)
         {
+           
+            Session s = new Session();
             try
             {
                 string Urlbase = "https://localhost:44390/Authentication";
@@ -41,7 +44,15 @@ namespace Schedule
                     using (var streamReader = new StreamReader(response.GetResponseStream()))
                     {
                         var result = streamReader.ReadToEnd();
-                        MessageBox.Show(result);
+                        var data = (JObject)JsonConvert.DeserializeObject(result);
+                        s.id= data["userID"].Value<int>();
+                        s.username = data["username"].Value<string>();
+                        s.password = data["password"].Value<string>();
+                        s.token= data["token"].Value<string>();
+                        MessageBox.Show(s.token);
+                        TKB f = new TKB(s);
+                        f.Show();
+
                     }
                 }
             }

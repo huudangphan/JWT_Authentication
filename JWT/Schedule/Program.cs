@@ -17,7 +17,7 @@ namespace Schedule
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TKB());
+            Application.Run(new Form1());
         }
     }
 }
