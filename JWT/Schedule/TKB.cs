@@ -161,8 +161,7 @@ namespace Schedule
                     job = dataGridView1.Rows[i].Cells[4].Value.ToString();
                     userid = dataGridView1.Rows[i].Cells[1].Value.ToString();                    
                     Sua(id, userid, day, time, job);
-                }
-                
+                }                
                 loadData();
             }
             catch (Exception ex)
