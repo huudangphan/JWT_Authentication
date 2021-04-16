@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace JWT
 {
-    public class User
+    public  class User
     {
         
-        public int userID { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public string token { get; set; }
+        public  int userID { get; set; }
+        public  string username { get; set; }
+        public  string password { get; set; }
+        public static string token { get; set; }
+        
     }
 }

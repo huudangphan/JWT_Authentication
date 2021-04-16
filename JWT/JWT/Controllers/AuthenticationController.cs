@@ -25,5 +25,11 @@ namespace JWT.Controllers
                 return BadRequest();
             return Ok(user);
         }
+        
+        [HttpGet]
+        public string test()
+        {
+            return _authenticateService.Token();
+        }
     }
 }

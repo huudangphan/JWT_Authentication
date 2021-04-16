@@ -49,9 +49,15 @@ namespace Schedule
                         s.username = data["username"].Value<string>();
                         s.password = data["password"].Value<string>();
                         s.token= data["token"].Value<string>();
-                        MessageBox.Show(s.token);
-                        TKB f = new TKB(s);
-                        f.Show();
+                        //MessageBox.Show(s.token);
+                        if (s.token != null)
+                        {
+                            this.Hide();
+                            TKB f = new TKB(s);
+                            f.ShowDialog();
+                            this.Show();
+                        }
+
 
                     }
                 }
@@ -59,7 +65,7 @@ namespace Schedule
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Username or Password imvalid");
             }
             
             

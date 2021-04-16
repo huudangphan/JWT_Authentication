@@ -8,8 +8,8 @@ namespace Schedule
 {
     class ScheduleModel
     {
-        public int id { get; set; }
-        public int userId { get; set; }
+        public string id { get; set; }
+        public string userId { get; set; }
         public string day { get; set; }
         public string time { get; set; }
         public string job { get; set; }

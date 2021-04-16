@@ -14,12 +14,12 @@ using Newtonsoft.Json;
 
 namespace JWT
 {
-    public class AuthenticateService : IAuthenticateService
+    public  class AuthenticateService : IAuthenticateService
     {
         string conStr = @"Server=172.16.8.20;Port=5432;User Id=POSMAN;Password=apzon@123;Database=Schedule";
         DataTable dt;
         // get username
-        private string ExcuteQuery(string query)
+        private  string ExcuteQuery(string query)
         {
             NpgsqlConnection conn = new NpgsqlConnection(conStr);
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
@@ -45,7 +45,7 @@ namespace JWT
 
         }
         // get password
-        private string ExcuteQueryp(string query)
+        private  string ExcuteQueryp(string query)
         {
             NpgsqlConnection conn = new NpgsqlConnection(conStr);
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
@@ -70,7 +70,7 @@ namespace JWT
             return result;
 
         }
-        private int ExcuteQueryI(string query)
+        private  int ExcuteQueryI(string query)
         {
             NpgsqlConnection conn = new NpgsqlConnection(conStr);
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
@@ -97,13 +97,11 @@ namespace JWT
         }
 
         private readonly AppSettings _appSettings;
-        public AuthenticateService(IOptions<AppSettings> appsttings  )
+        public AuthenticateService(IOptions<AppSettings> appsttings)
         {
             _appSettings = appsttings.Value;
-        }
-
-        
-        public User Authenticate(string username, string password)
+        }        
+        public  User Authenticate(string username, string password)
         {
             // lay username va password tu database
             string queryu = "select username from Account acc where acc.username='" + username + "'and password='" + password + "'";
@@ -113,7 +111,7 @@ namespace JWT
             string us = ExcuteQuery(queryu);
             string ps = ExcuteQueryp(queryp);
             // add user vao listuser
-            List<User> ListUser = new List<User>() 
+             List<User>  ListUser = new List<User>() 
             { 
                 new User{userID=id,username=us,password=ps}
             };
@@ -126,18 +124,23 @@ namespace JWT
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new System.Security.Claims.ClaimsIdentity(new Claim[]
-                 {
-                     new Claim(ClaimTypes.Name,user.userID.ToString()),
+                 {                     
                      new Claim(ClaimTypes.Role,"Admin"),
                      new Claim(ClaimTypes.Version,"V3.1")
                  }),
-                Expires = DateTime.UtcNow.AddMinutes(1),
+                Expires = DateTime.UtcNow.AddMinutes(5),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             user.password = "";
             var token = tokenHandle.CreateToken(tokenDescriptor);
-            user.token = tokenHandle.WriteToken(token);
+            User.token = tokenHandle.WriteToken(token);     
+
             return user;
+        }    
+
+        public string Token()
+        {
+            return User.token;
         }
     }
 }

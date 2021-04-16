@@ -43,6 +43,7 @@ namespace JWT
             {
                 au.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 au.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                
             }).AddJwtBearer(jwt =>
             {
                 jwt.RequireHttpsMetadata = false;
@@ -55,12 +56,9 @@ namespace JWT
                     ValidateAudience = false,
                     ValidateLifetime=true,
                     ClockSkew=TimeSpan.Zero
-
-                };
-                
+                };                
             });
             services.AddScoped<IAuthenticateService, AuthenticateService>();
-
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "JWT", Version = "v1" });
