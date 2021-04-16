@@ -45,10 +45,10 @@ namespace Schedule
                     {
                         var result = streamReader.ReadToEnd();
                         var data = (JObject)JsonConvert.DeserializeObject(result);
-                        s.id= data["userID"].Value<int>();
+                        s.id = data["userID"].Value<int>();
                         s.username = data["username"].Value<string>();
                         s.password = data["password"].Value<string>();
-                        s.token= data["token"].Value<string>();
+                        s.token = data["token"].Value<string>();
                         //MessageBox.Show(s.token);
                         if (s.token != null)
                         {
@@ -61,6 +61,42 @@ namespace Schedule
 
                     }
                 }
+
+
+                string Urlbase2 = "https://localhost:44390/Authentication";
+                
+                string postData2 = JsonConvert.SerializeObject(user);
+                string url2 = string.Format(Urlbase);
+                WebRequest request2 = WebRequest.Create(url);
+                request.ContentType = "application/json";
+                request.Method = "GET";
+                using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+                {
+                    streamWriter.Write(postData);
+                    streamWriter.Flush();
+                    streamWriter.Close();
+                    var response = request.GetResponse();
+                    using (var streamReader = new StreamReader(response.GetResponseStream()))
+                    {
+                        var result = streamReader.ReadToEnd();
+                        var data = (JObject)JsonConvert.DeserializeObject(result);
+                        s.id = data["userID"].Value<int>();
+                        s.username = data["username"].Value<string>();
+                        s.password = data["password"].Value<string>();
+                        s.token = data["token"].Value<string>();
+                        //MessageBox.Show(s.token);
+                        if (s.token != null)
+                        {
+                            this.Hide();
+                            TKB f = new TKB(s);
+                            f.ShowDialog();
+                            this.Show();
+                        }
+
+
+                    }
+                }
+
             }
             catch (Exception ex)
             {

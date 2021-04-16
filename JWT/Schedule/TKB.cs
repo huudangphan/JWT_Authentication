@@ -121,7 +121,6 @@ namespace Schedule
                 MessageBox.Show("Login Session expies, please login again");
                 this.Close();
             }
-
         }
         public void Xoa(string id)
         {
@@ -160,16 +159,7 @@ namespace Schedule
                     day = dataGridView1.Rows[i].Cells[2].Value.ToString();
                     time = dataGridView1.Rows[i].Cells[3].Value.ToString();
                     job = dataGridView1.Rows[i].Cells[4].Value.ToString();
-                    userid = dataGridView1.Rows[i].Cells[1].Value.ToString();
-                    //var response = await RestClient.getidTKB(userid, id);
-                    //if (response == "[]")
-                    //{
-                    //    Them(userid, day, time, job);
-                    //}
-                    //else
-                    //{
-                    //    Sua(id, userid, day, time, job);
-                    //}
+                    userid = dataGridView1.Rows[i].Cells[1].Value.ToString();                    
                     Sua(id, userid, day, time, job);
                 }
                 
@@ -177,7 +167,6 @@ namespace Schedule
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Login Session expies, please login again");
                 this.Close();
             }
@@ -215,6 +204,14 @@ namespace Schedule
                 MessageBox.Show("Login Session expies, please login again");
                 this.Close();
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Info f = new Info(sess);
+            this.Hide();
+            f.ShowDialog();
+            this.Show();
 
         }
     }

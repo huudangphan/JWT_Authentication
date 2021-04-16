@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace JWT.Controllers
 {
@@ -24,9 +26,11 @@ namespace JWT.Controllers
             if (user == null)
                 return BadRequest();
             return Ok(user);
+            
         }
         
         [HttpGet]
+        
         public string test()
         {
             return _authenticateService.Token();

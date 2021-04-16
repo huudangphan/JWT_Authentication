@@ -133,8 +133,8 @@ namespace JWT
             };
             user.password = "";
             var token = tokenHandle.CreateToken(tokenDescriptor);
-            User.token = tokenHandle.WriteToken(token);     
-
+            User.token = tokenHandle.WriteToken(token);      
+            
             return user;
         }    
 

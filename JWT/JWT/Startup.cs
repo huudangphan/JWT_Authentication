@@ -29,16 +29,14 @@ namespace JWT
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            
             services.AddControllers();
 
             var appSettingSections = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingSections);
-
             // JWT
             var appSetting = appSettingSections.Get<AppSettings>();
             var key = Encoding.UTF32.GetBytes(appSetting.Key);
-
             services.AddAuthentication(au =>
             {
                 au.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -64,7 +62,6 @@ namespace JWT
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "JWT", Version = "v1" });
             });
         }
-
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -74,13 +71,9 @@ namespace JWT
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "JWT v1"));
             }
-
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
