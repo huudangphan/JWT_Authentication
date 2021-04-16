@@ -14,6 +14,7 @@ namespace JWT.Controllers
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     [Route("[controller]")]
+  
 
          
     public class WeatherForecastController : ControllerBase
@@ -28,12 +29,10 @@ namespace JWT.Controllers
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
-            _logger = logger;      
+            _logger = logger;  
                                   
         }
-
-        [HttpGet]
-        
+        [HttpGet]        
         public IEnumerable<WeatherForecast> Get()
         {
             if (CheckToken.check()==true)

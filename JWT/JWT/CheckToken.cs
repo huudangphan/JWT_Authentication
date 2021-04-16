@@ -8,17 +8,21 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace JWT
 {
-    public static class CheckToken
+    public  class CheckToken
     {
-        
-        public static bool check()
-        {
-            
-            if (User.token.Equals(JwtBearerDefaults.AuthenticationScheme))
-                return true;
-            return false;
-            
+        private  Startup _startup;
+        public  CheckToken(Startup startup)
 
+        {
+            _startup = startup;
+        }
+        public static  bool check()
+        {
+            if (User.token == JwtBearerDefaults.AuthenticationScheme)
+                return false;
+            else return true;
+            
         }
     }
 }
+ 
