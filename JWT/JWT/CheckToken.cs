@@ -17,10 +17,11 @@ namespace JWT
             _startup = startup;
         }
         public static  bool check()
-        {
+        { 
             if (User.token == JwtBearerDefaults.AuthenticationScheme)
                 return false;
-            else return true;
+            else
+                return true;
             
         }
     }
