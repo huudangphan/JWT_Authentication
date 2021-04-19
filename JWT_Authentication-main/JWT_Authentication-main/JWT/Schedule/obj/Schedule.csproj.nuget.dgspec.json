@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\JWT_Authentication-main\\JWT_Authentication-main\\JWT\\Schedule\\Schedule.csproj": {}
+    "D:\\JWT_Authentication\\JWT_Authentication-main\\JWT_Authentication-main\\JWT\\Schedule\\Schedule.csproj": {}
   },
   "projects": {
-    "D:\\JWT_Authentication-main\\JWT_Authentication-main\\JWT\\Schedule\\Schedule.csproj": {
+    "D:\\JWT_Authentication\\JWT_Authentication-main\\JWT_Authentication-main\\JWT\\Schedule\\Schedule.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\JWT_Authentication-main\\JWT_Authentication-main\\JWT\\Schedule\\Schedule.csproj",
+        "projectUniqueName": "D:\\JWT_Authentication\\JWT_Authentication-main\\JWT_Authentication-main\\JWT\\Schedule\\Schedule.csproj",
         "projectName": "Schedule",
-        "projectPath": "D:\\JWT_Authentication-main\\JWT_Authentication-main\\JWT\\Schedule\\Schedule.csproj",
+        "projectPath": "D:\\JWT_Authentication\\JWT_Authentication-main\\JWT_Authentication-main\\JWT\\Schedule\\Schedule.csproj",
         "packagesPath": "C:\\Users\\huuda\\.nuget\\packages\\",
-        "outputPath": "D:\\JWT_Authentication-main\\JWT_Authentication-main\\JWT\\Schedule\\obj\\",
+        "outputPath": "D:\\JWT_Authentication\\JWT_Authentication-main\\JWT_Authentication-main\\JWT\\Schedule\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\huuda\\AppData\\Roaming\\NuGet\\NuGet.Config",

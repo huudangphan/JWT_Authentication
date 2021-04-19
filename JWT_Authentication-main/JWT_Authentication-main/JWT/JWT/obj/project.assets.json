@@ -673,11 +673,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\JWT_Authentication-main\\JWT_Authentication-main\\JWT\\JWT\\JWT.csproj",
+      "projectUniqueName": "D:\\JWT_Authentication\\JWT_Authentication-main\\JWT_Authentication-main\\JWT\\JWT\\JWT.csproj",
       "projectName": "JWT",
-      "projectPath": "D:\\JWT_Authentication-main\\JWT_Authentication-main\\JWT\\JWT\\JWT.csproj",
+      "projectPath": "D:\\JWT_Authentication\\JWT_Authentication-main\\JWT_Authentication-main\\JWT\\JWT\\JWT.csproj",
       "packagesPath": "C:\\Users\\huuda\\.nuget\\packages\\",
-      "outputPath": "D:\\JWT_Authentication-main\\JWT_Authentication-main\\JWT\\JWT\\obj\\",
+      "outputPath": "D:\\JWT_Authentication\\JWT_Authentication-main\\JWT_Authentication-main\\JWT\\JWT\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\huuda\\AppData\\Roaming\\NuGet\\NuGet.Config",
