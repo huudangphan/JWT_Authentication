@@ -14,8 +14,10 @@ namespace JWT
         public  int userID { get; set; }
         public  string username { get; set; }
         public  string password { get; set; }       
-        public static string token { get; set; }
-        public User() { }
+        public static List<string> token { get; set; }
+        public User() {
+            token = new List<string>();
+        }
         
     }
 }

@@ -129,21 +129,20 @@ namespace JWT
                      new Claim(ClaimTypes.Role,"Admin"),
                      new Claim(ClaimTypes.Version,"V3.1")
                  }),
-                Expires = DateTime.UtcNow.AddDays(2),
+                Expires = DateTime.UtcNow.AddMinutes(20),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             user.password = "";
             var token = tokenHandle.CreateToken(tokenDescriptor);
-            
-            User.token = tokenHandle.WriteToken(token);      
-          
+            string tokenRes = tokenHandle.WriteToken(token);
+            User.token.Add(tokenRes);
+            Startup.listToken.Add(tokenRes);
             return user;
         }
-       
-       
-        public string Token()
+
+        public List<string> Token()
         {
-            return User.token;
+            return Startup.listToken;
         }
     }
 }

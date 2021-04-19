@@ -12,19 +12,19 @@ using System.Threading.Tasks;
 namespace JWT
 {
     [AttributeUsage(AttributeTargets.Class)]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    
     public class APIAuthorization: Attribute, IAuthorizationFilter 
     {
         public void OnAuthorization(AuthorizationFilterContext filterContext)
-        {           
+        {      
+            
 
-            if(User.token!=null)
+            if(Startup.listToken.Count!=0&&check())
             {
                 return;
             }
             else
-            {
-                
+            {                
                 filterContext.HttpContext.Response.Headers.Add("AuthStatus", "NotAuthorized");
                 filterContext.HttpContext.Response.StatusCode = (int)HttpStatusCode.Forbidden;
                 filterContext.HttpContext.Response.HttpContext.Features.Get<IHttpResponseFeature>().ReasonPhrase = "Not Authorized";
@@ -39,6 +39,21 @@ namespace JWT
             }
            
 
+        }
+        private bool check()
+        {
+            for (int i = 0; i < User.token.Count; i++)
+            {
+                for (int j = 0; j < Startup.listToken.Count; j++)
+                {
+                    if(User.token[i]==Startup.listToken[j])
+                    {
+                        return true;
+                        break;
+                    }    
+                }
+            }
+            return false;
         }
       
     

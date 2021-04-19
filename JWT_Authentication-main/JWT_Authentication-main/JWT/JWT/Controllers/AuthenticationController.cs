@@ -28,12 +28,12 @@ namespace JWT.Controllers
             return Ok(user);
             
         }
-        
+
         [HttpGet]
-        
-        public string test()
-        {
-            return _authenticateService.Token();
+
+        public List<string> test()
+        {  
+             return _authenticateService.Token();
         }
     }
 }
